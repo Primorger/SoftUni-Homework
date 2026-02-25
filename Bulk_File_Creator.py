@@ -1,16 +1,19 @@
 r'''
-..\SoftUni-Homework\Soft_Uni\Python_OOP_2026
+\SoftUni-Homework\Soft_Uni\Python_OOP_2026
 
 '''
 import os
+import re
 
-lecture_name = input("Input the theme name: ")
-files_path = input("Input the path for the files: ")
-file_extention = input("Input the file extention: ")
+lecture_name = input("Input the theme name: ").strip()
+files_path = input("Input the path for the files: ").strip()
+file_extention = input("Input the file extention: ").strip()
 files = []
 digits = "0123456789"
 
 def format_file_name(file_name):
+    if not file_name:
+        return ""
     if file_name[0] in digits:
         final_file_name = file_name[4:].replace(" ", "_")
     else:
@@ -25,8 +28,23 @@ def get_formated_file_names():
         files.append(format_file_name(exersise_name) + file_extention)
 
 def create_files(files_list):
-    folder_path = os.path.join(files_path, format_file_name(lecture_name))
-    
+    raw = files_path.replace("\n", "").replace("\r", "")
+    s = raw.strip()
+    if not s:
+        base_path = os.getcwd()
+    else:
+        s = os.path.expanduser(s)
+        is_unc = s.startswith('\\\\')
+        has_drive = re.match(r'^[A-Za-z]:[\\/]', s) is not None
+        if is_unc or has_drive:
+            base_path = os.path.abspath(s)
+        elif s.startswith(('\\', '/')):
+            rel = s.lstrip('\\/')
+            base_path = os.path.abspath(os.path.join(os.getcwd(), rel))
+        else:
+            base_path = os.path.abspath(s)
+
+    folder_path = os.path.join(base_path, format_file_name(lecture_name))
     os.makedirs(folder_path, exist_ok=True)
 
     for file in files_list:
