@@ -4,6 +4,23 @@ class Hero:
         self.health = health
         
     def defend(self, damage):
-        pass
+        self.health -= damage
+        
+        if self.health <= 0:
+            return f"{self.name} was defeated"
+            self.health = 0
+        
     def heal(self, amount):
-        pass
+        self.health += amount
+        
+#------------------ Tests ------------------#
+        
+hero = Hero("Peter", 100)
+
+print(hero.defend(50))
+
+hero.heal(50)
+
+print(hero.defend(99))
+
+print(hero.defend(1))
