@@ -9,8 +9,7 @@ class Flower:
     def status(self):
         if self.is_happy:
             return f"{self.name} is happy"
-        else:
-            return f"{self.name} is not happy"
+        return f"{self.name} is not happy"
         
 #------------------ Tests ------------------#
 
