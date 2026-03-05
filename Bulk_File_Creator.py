@@ -1,6 +1,5 @@
 r'''
 \SoftUni-Homework\Soft_Uni\Python_OOP_2026
-
 '''
 import os
 import re
