@@ -13,7 +13,7 @@ class Player:
         return f"Skill {skill_name} added to the collection of the player {self.name}"
 
     def player_info(self) -> str:
-        result = f"Name: {self.name} Guild: {self.guild} HP: {self.hp}\nMP: {self.mp}"
+        result = f"Name: {self.name}\nGuild: {self.guild}\nHP: {self.hp}\nMP: {self.mp}"
         for skill_name, mana_cost in self.skills.items():
             result += f"\n==={skill_name} - {mana_cost}"
         return result
