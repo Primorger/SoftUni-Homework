@@ -10,7 +10,7 @@ class take_skip:
     def __next__(self):
         self.__counted += 1
         if self.__counted == self.count:
-            raise StopIteration()
+            raise StopIteration
         return self.__counted * self.step
 
 #------------- Test code -------------#
