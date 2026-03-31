@@ -3,7 +3,8 @@ def logged(function):
         result = function(*args)
         return f"you called {function.__name__}{args}\nit returned {result}"
     return wrapper
-#--------------- Tests ---------------#
+
+#------------- Test Cases -------------#
 
 @logged
 def func(*args):
