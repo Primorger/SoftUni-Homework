@@ -5,7 +5,5 @@ class EngineerAstronaut(BaseAstronaut):
         super().__init__(id_number, salary, "EngineerAstronaut", 80)
         
     def train(self):
-        self.stamina += 5
-        if self.stamina > 100:
-            self.stamina = 100    
+        self.stamina = min(self.stamina + 5, 100)    
     

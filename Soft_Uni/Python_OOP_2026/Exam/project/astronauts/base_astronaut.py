@@ -6,38 +6,37 @@ class BaseAstronaut(ABC):
         self.salary = salary
         self.specialization = specialization
         self.stamina = stamina
-        
+
     @property
     def id_number(self):
         return self.__id_number
-        
+
     @id_number.setter
     def id_number(self, value):
-        for char in value:
-            if char.isalpha():
-                raise ValueError("ID can contain only digits!")
+        if not value.isdigit():
+            raise ValueError("ID can contain only digits!")
         self.__id_number = value
-        
+
     @property
     def salary(self):
         return self.__salary
-        
+
     @salary.setter
     def salary(self, value):
-        if value < 0:
+        if value < 0.0:
             raise ValueError("Salary must be a positive number!")
         self.__salary = value
-        
+
     @property
     def specialization(self):
         return self.__specialization
-        
+
     @specialization.setter
     def specialization(self, value):
-        if not value:
+        if not value.strip():
             raise ValueError("Specialization cannot be empty!")
         self.__specialization = value
-        
+
     @property
     def stamina(self):
         return self.__stamina
@@ -47,7 +46,7 @@ class BaseAstronaut(ABC):
         if not 0 <= value <= 100:
             raise ValueError("Stamina is out of range!")
         self.__stamina = value
-        
+
     @abstractmethod
     def train(self):
         pass
