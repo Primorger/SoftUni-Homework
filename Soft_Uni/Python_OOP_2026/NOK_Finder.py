@@ -6,7 +6,7 @@ if num1 > num2:
 else:
     nok = num2
 
-def check_nok(num1, num2, nok):
+def check_nok(num1: int, num2: int, nok: int) -> int:
     while True:
         if nok % num1 == 0 and nok % num2 == 0:
             return nok
